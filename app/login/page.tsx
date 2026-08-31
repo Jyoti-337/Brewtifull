@@ -9,7 +9,16 @@ import { motion } from 'framer-motion';
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  let rawCallbackUrl = searchParams.get('callbackUrl') || '/';
+  if (rawCallbackUrl.startsWith('http://') || rawCallbackUrl.startsWith('https://')) {
+    try {
+      const parsed = new URL(rawCallbackUrl);
+      rawCallbackUrl = parsed.pathname + parsed.search;
+    } catch (e) {
+      rawCallbackUrl = '/';
+    }
+  }
+  const callbackUrl = rawCallbackUrl;
   const message = searchParams.get('message');
 
   const [email, setEmail] = useState('');

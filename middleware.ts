@@ -11,6 +11,10 @@ export default withAuth(
     }
   },
   {
+    secret: process.env.NEXTAUTH_SECRET || 'brew-tiful-coffee-super-secret-key-32-chars-long',
+    pages: {
+      signIn: '/login',
+    },
     callbacks: {
       authorized: ({ token, req }) => {
         const path = req.nextUrl.pathname;
