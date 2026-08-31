@@ -213,7 +213,7 @@ export async function POST(req: Request) {
       });
     }
 
-    const appUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+    const appUrl = process.env.NEXTAUTH_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       payment_method_types: ['card'],
       line_items: lineItems,
