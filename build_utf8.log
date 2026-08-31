@@ -1,0 +1,234 @@
+﻿
+> coffee-app@0.1.0 build
+> next build
+
+node.exe : ÔÜá Warning: 
+Next.js inferred your 
+workspace root, but it 
+may not be correct.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified: 
+(ÔÜá     Warning: 
+Ne...not be     
+correct.:String) [], R  
+  emoteException
+    + 
+FullyQualifiedErrorI    
+d : NativeCommandError
+ 
+ We detected multiple 
+lockfiles and selected 
+the directory of C:\User
+s\Tushar\Downloads\packa
+ge-lock.json as the 
+root directory.
+ To silence this 
+warning, set 
+`turbopack.root` in 
+your Next.js config, or 
+consider removing one 
+of the lockfiles if 
+it's not needed.
+   See https://nextjs.or
+g/docs/app/api-reference
+/config/next-config-js/t
+urbopack#root-directory 
+for more information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\Tushar\Dow
+nloads\ffffff-ezgif-7359
+0959734fd696-gif-jpg\pac
+kage-lock.json
+
+Ôû▓ Next.js 16.2.1 (Turbopack)
+
+  Creating an optimized production build ...
+Error: Cannot apply 
+unknown utility class 
+`text-white`. Are you 
+using CSS modules or 
+similar and missing 
+`@reference`? https://ta
+ilwindcss.com/docs/funct
+ions-and-directives#refe
+rence-directive
+    [2m[at 
+onInvalidCandidate (C:\U
+sers\Tushar\Downloads\ff
+ffff-ezgif-73590959734fd
+696-gif-jpg\node_modules
+\tailwindcss\dist\lib.js
+:21:1314)][0m
+    [2m[at Ee (C:\Users
+\Tushar\Downloads\ffffff
+-ezgif-73590959734fd696-
+gif-jpg\node_modules\tai
+lwindcss\dist\lib.js:16:
+37066)][0m
+    [2m[at C:\Users\Tus
+har\Downloads\ffffff-ezg
+if-73590959734fd696-gif-
+jpg\node_modules\tailwin
+dcss\dist\lib.js:21:355]
+[0m
+    [2m[at _r (C:\Users
+\Tushar\Downloads\ffffff
+-ezgif-73590959734fd696-
+gif-jpg\node_modules\tai
+lwindcss\dist\lib.js:3:1
+733)][0m
+    [2m[at I (C:\Users\
+Tushar\Downloads\ffffff-
+ezgif-73590959734fd696-g
+if-jpg\node_modules\tail
+windcss\dist\lib.js:3:13
+77)][0m
+    [2m[at Te (C:\Users
+\Tushar\Downloads\ffffff
+-ezgif-73590959734fd696-
+gif-jpg\node_modules\tai
+lwindcss\dist\lib.js:21:
+172)][0m
+    [2m[at mn (C:\Users
+\Tushar\Downloads\ffffff
+-ezgif-73590959734fd696-
+gif-jpg\node_modules\tai
+lwindcss\dist\lib.js:38:
+294)][0m
+    [2m[at process.proc
+essTicksAndRejections (n
+ode:internal/process/tas
+k_queues:105:5)][0m
+    [2m[at async gn (C:
+\Users\Tushar\Downloads\
+ffffff-ezgif-73590959734
+fd696-gif-jpg\node_modul
+es\tailwindcss\dist\lib.
+js:38:631)][0m
+    [2m[at async Xr (C:
+\Users\Tushar\Downloads\
+ffffff-ezgif-73590959734
+fd696-gif-jpg\node_modul
+es\@tailwindcss\node\dis
+t\index.js:10:3416)][0m
+
+> Build error occurred
+Error: Turbopack build 
+failed with 1 errors:
+./ffffff-ezgif-735909597
+34fd696-gif-jpg/app/glob
+als.css
+Error evaluating 
+Node.js code
+CssSyntaxError: 
+tailwindcss: C:\Users\Tu
+shar\Downloads\ffffff-ez
+gif-73590959734fd696-gif
+-jpg\app\globals.css:1:1
+: Cannot apply unknown 
+utility class 
+`text-white`. Are you 
+using CSS modules or 
+similar and missing 
+`@reference`? https://ta
+ilwindcss.com/docs/funct
+ions-and-directives#refe
+rence-directive
+    at Input.error (ffff
+ff-ezgif-73590959734fd69
+6-gif-jpg/node_modules/p
+ostcss/lib/input.js:135:
+16) [C:\Users\Tushar\Dow
+nloads\ffffff-ezgif-7359
+0959734fd696-gif-jpg\.ne
+xt\build\chunks\0riu_109
+pj3.._.js:4651:22]
+    at error (ffffff-ezg
+if-73590959734fd696-gif-
+jpg/node_modules/postcss
+/lib/node.js:146:32) [C:
+\Users\Tushar\Downloads\
+ffffff-ezgif-73590959734
+fd696-gif-jpg\.next\buil
+d\chunks\0riu_109pj3.._.
+js:928:38]
+    [at Object.Once (C:\
+Users\Tushar\Downloads\f
+fffff-ezgif-73590959734f
+d696-gif-jpg\node_module
+s\@tailwindcss\postcss\d
+ist\index.js:10:6913)]
+    [at process.processT
+icksAndRejections (node:
+internal/process/task_qu
+eues:105:5)]
+    at async 
+LazyResult.runAsync (fff
+fff-ezgif-73590959734fd6
+96-gif-jpg/node_modules/
+postcss/lib/lazy-result.
+js:293:11) [C:\Users\Tus
+har\Downloads\ffffff-ezg
+if-73590959734fd696-gif-
+jpg\.next\build\chunks\0
+riu_109pj3.._.js:6214:21
+]
+    at async transform (
+turbopack:///[turbopack-
+node]/transforms/postcss
+.ts:70:34) [C:\Users\Tus
+har\Downloads\ffffff-ezg
+if-73590959734fd696-gif-
+jpg\.next\build\chunks\[
+root-of-the-server]__0p6
+q5d1._.js:146:36]
+    at async run (turbop
+ack:///[turbopack-node]/
+child_process/evaluate.t
+s:89:23) [C:\Users\Tusha
+r\Downloads\ffffff-ezgif
+-73590959734fd696-gif-jp
+g\.next\build\chunks\[ro
+ot-of-the-server]__0z_.e
+gg._.js:443:31]
+
+Import trace:
+  Client Component 
+Browser:
+    ./ffffff-ezgif-73590
+959734fd696-gif-jpg/app/
+globals.css [Client 
+Component Browser]
+    ./ffffff-ezgif-73590
+959734fd696-gif-jpg/app/
+layout.tsx [Server 
+Component]
+
+
+    at async transform (
+turbopack:///[turbopack-
+node]/transforms/postcss
+.ts:70:34) [C:\Users\Tus
+har\Downloads\ffffff-ezg
+if-73590959734fd696-gif-
+jpg\.next\build\chunks\[
+root-of-the-server]__0p6
+q5d1._.js:146:36])
+    at async run (turbop
+ack:///[turbopack-node]/
+child_process/evaluate.t
+s:89:23) [C:\Users\Tusha
+r\Downloads\ffffff-ezgif
+-73590959734fd696-gif-jp
+g\.next\build\chunks\[ro
+ot-of-the-server]__0z_.e
+gg._.js:443:31])

@@ -1,0 +1,152 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String
+  email         String       @unique
+  password_hash String
+  role          String       @default("CUSTOMER") // CUSTOMER | ADMIN
+  created_at    DateTime     @default(now())
+
+  orders         Order[]
+  reviews        Review[]
+  cart_items     DbCartItem[]
+  wishlist_items WishlistItem[]
+
+  @@map("users")
+}
+
+model Product {
+  id           String      @id @default(cuid())
+  name         String
+  description  String
+  price        Float
+  category     String      @default("Hot Coffee")
+  image_url    String
+  rating       Float       @default(5.0)
+  stock        Int         @default(100)
+  is_available Boolean     @default(true)
+  is_popular   Boolean     @default(false)
+  is_new       Boolean     @default(false)
+  features     String      @default("[]") // JSON string array
+  created_at   DateTime    @default(now())
+
+  order_items    OrderItem[]
+  reviews        Review[]
+  cart_items     DbCartItem[]
+  wishlist_items WishlistItem[]
+
+  @@map("products")
+}
+
+model Order {
+  id                    String      @id @default(cuid())
+  order_number          String      @unique
+  user_id               String?
+  user                  User?       @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  coupon_id             String?
+  coupon                Coupon?     @relation(fields: [coupon_id], references: [id], onDelete: SetNull)
+  coupon_code           String?
+  discount_amount       Float       @default(0)
+  status                String      @default("PENDING") // PENDING | PAID | PREPARING | COMPLETED | CANCELLED
+  subtotal              Float
+  delivery_fee          Float       @default(0)
+  tax                   Float       @default(0)
+  total                 Float
+  payment_method        String      @default("stripe")
+  stripe_session_id     String?
+  customer_name         String
+  customer_phone        String
+  order_type            String      // dine_in, take_away, delivery
+  table_number          Int?
+  guests                Int?
+  pickup_time           String?
+  address_line1         String?
+  address_line2         String?
+  city                  String?
+  pincode               String?
+  delivery_instructions String?
+  special_requests      String?
+  cancellation_reason   String?
+  created_at            DateTime    @default(now())
+
+  order_items           OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id                String   @id @default(cuid())
+  order_id          String
+  order             Order    @relation(fields: [order_id], references: [id], onDelete: Cascade)
+  product_id        String
+  product           Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  quantity          Int
+  price_at_purchase Float
+
+  @@map("order_items")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  product_id String
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  rating     Int
+  comment    String
+  created_at DateTime @default(now())
+
+  @@map("reviews")
+}
+
+model DbCartItem {
+  id         String   @id @default(cuid())
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  product_id String
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  quantity   Int      @default(1)
+  size       String?
+  created_at DateTime @default(now())
+
+  @@unique([user_id, product_id, size])
+  @@map("cart_items")
+}
+
+model WishlistItem {
+  id         String   @id @default(cuid())
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  product_id String
+  product    Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  created_at DateTime @default(now())
+
+  @@unique([user_id, product_id])
+  @@map("wishlist_items")
+}
+
+model Coupon {
+  id              String    @id @default(cuid())
+  code            String    @unique
+  discount_type   String    // 'percentage' | 'fixed_amount'
+  discount_value  Float
+  min_order_value Float     @default(0)
+  max_uses        Int       @default(1000)
+  times_used      Int       @default(0)
+  expires_at      DateTime?
+  is_active       Boolean   @default(true)
+  created_at      DateTime  @default(now())
+
+  orders          Order[]
+
+  @@map("coupons")
+}
