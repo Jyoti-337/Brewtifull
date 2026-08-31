@@ -27,7 +27,8 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     setIsProfileOpen(false);
-    await signOut({ callbackUrl: '/' });
+    const originUrl = typeof window !== 'undefined' ? window.location.origin : '/';
+    await signOut({ callbackUrl: originUrl });
   };
 
   return (
